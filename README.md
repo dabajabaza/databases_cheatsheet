@@ -1,6 +1,6 @@
 # databases_cheatsheet
 
-### PostGres
+### PostgreSQL
 
 * show tables
  * SELECT * FROM pg_catalog.pg_tables
