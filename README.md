@@ -13,15 +13,15 @@
 * show tables\tables and sequences\ tables and views
  * \dt \d \dS
 * backup database
- * pg_dump -U <username> -f /path/mydb.sql <dbname>
- * pg_dump -U <username> -s -f /path/mydb.sql <dbname> --schema only
- * pg_dump -U <username> -d <dbname> -t <tbname> > <filename> --single table
+ * pg_dump -U username -f /path/mydb.sql dbname
+ * pg_dump -U username -s -f /path/mydb.sql dbname --schema only
+ * pg_dump -U username -d dbname -t tbname > filename --single table
 * backup database with password prompt
- * pg_dump -U <username> -W -f /path/mydb.sql <dbname>
+ * pg_dump -U username -W -f /path/mydb.sql dbname
 * restore database
  * \i /path/mydb.sql
  * dbname < /path/mydb.sql
 * show pg_config file location
  * SHOW config_file
 * alter column type
- * alter table <table_name> alter column <column_name> type varchar(2048) using <column_name>::varchar;
+ * alter table table_name alter column column_name type varchar(2048) using column_name::varchar;
