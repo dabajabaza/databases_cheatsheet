@@ -15,6 +15,7 @@
 * backup database
  * pg_dump -U <username> -f /path/mydb.sql <dbname>
  * pg_dump -U <username> -s -f /path/mydb.sql <dbname> --schema only
+ * pg_dump -U <username> -d <dbname> -t <tbname> > <filename> --single table
 * backup database with password prompt
  * pg_dump -U <username> -W -f /path/mydb.sql <dbname>
 * restore database
