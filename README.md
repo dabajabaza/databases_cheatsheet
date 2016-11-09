@@ -19,7 +19,7 @@
 * backup database with password prompt
  * pg_dump -U username -W -f /path/mydb.sql dbname
 * restore database
- * \i /path/mydb.sql
+ * \i /path/mydb.sql --slashes is important
  * dbname < /path/mydb.sql
 * show pg_config file location
  * SHOW config_file
