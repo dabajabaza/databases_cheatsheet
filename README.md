@@ -33,4 +33,6 @@
   * SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'db';
 * connect as admin
   * psql -h localhost postgres postgres
+* export query to csv
+  * COPY (SELECT * FROM ...) TO '/tmp/filename.csv' (format CSV);
 
