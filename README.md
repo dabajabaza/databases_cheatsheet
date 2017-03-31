@@ -17,7 +17,7 @@
   * pg_dump -U username -s -f /path/mydb.sql dbname --schema only
   * pg_dump -U username -d dbname -t tbname > filename --single table
   * pg_dump -U username --data-only --table=tablename sourcedb > onetable.pg --single table
-  * psql destdb < onetable.pg --restore single table to database
+  * psql db < onetable.pg --restore single table to database
   * pg_restore --data-only --table=tablename fulldump.pg > onetable.pg --extracting single table out of the large dump
 * backup database with password prompt
   * pg_dump -U username -W -f /path/mydb.sql dbname
