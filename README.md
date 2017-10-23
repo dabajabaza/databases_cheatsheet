@@ -36,3 +36,7 @@
 * export query to csv
   * COPY (SELECT * FROM ...) TO '/tmp/filename.csv' (format CSV);
 
+### MySQL
+
+* import table from one database to another with the same name
+  * CREATE TABLE db1.table1 SELECT * FROM db2.table1;
