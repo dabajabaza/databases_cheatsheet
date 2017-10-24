@@ -18,9 +18,14 @@
 -  `\dt \d \dS`
 - _**use database**_
 -  `\c dbname`
-- _**alter column type**_
+- _**alter column type e.g. boolean to integer**_
 ```sql
-   ALTER TABLE tbname ALTER COLUMN col TYPE VARCHAR(2048) USING col::varchar;
+   ALTER TABLE tbname ALTER colname SET DEFAULT null;
+
+   ALTER TABLE tbname ALTER colname TYPE INTEGER USING CASE WHEN colname = false THEN 0 ELSE 1 END;
+
+   ALTER TABLE tbname ALTER colname SET DEFAULT 0;
+   COMMIT;
 ```
   
 ### backup, export database
