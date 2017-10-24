@@ -2,7 +2,8 @@
 
 ## PostgreSQL
 
-**useful queries**
+### useful queries
+
 - _**show db tables**_
 ```sql
    SELECT * FROM pg_catalog.pg_tables;
@@ -22,7 +23,7 @@
    ALTER TABLE tbname ALTER COLUMN col TYPE VARCHAR(2048) USING col::varchar;
 ```
   
-**backup, export database**
+### backup, export database
 
 - _**whole**_
 -  `pg_dump -U username -f /path/dump.sql dbname`
@@ -34,10 +35,10 @@
 -  `pg_dump -U username --data-only --table=tablename sourcedb > dump.sql`
 - _**export data to csv**_
 ```sql
-COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
+   COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
 ```
 
-**restore, import database**
+### restore, import database
 
 - _**restore database**_
 -  `\i /path/dump.sql`
@@ -54,7 +55,7 @@ COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
    COPY table1 FROM '/path/to/csv/data.txt' DELIMITER ',' CSV HEADER;
 ```
 
-**useful system commands**
+### useful system commands
 
 - _**show pg_config file location**_
 ```sql
@@ -68,9 +69,9 @@ COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
   SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'db';
 ```
 
-### MySQL
+## MySQL
 
-**restore, import database**
+### restore, import database
 
 - _**import table with the same name from one database to another**_
 ```sql
