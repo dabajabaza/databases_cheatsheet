@@ -1,42 +1,78 @@
-# databases_cheatsheet
+# Databases Cheatsheet
 
-### PostgreSQL
+## PostgreSQL
 
-* show tables
-  * SELECT * FROM pg_catalog.pg_tables
-* show tables without system tables
-  * SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema'
-* all databases
-  * \l
-* use database
-  * \c dbname
-* show tables\tables and sequences\ tables and views
-  * \dt \d \dS
-* backup database
-  * pg_dump -U username -f /path/mydb.sql dbname
-  * pg_dump -U username -s -f /path/mydb.sql dbname --schema only
-  * pg_dump -U username -d dbname -t tbname > filename --single table
-  * pg_dump -U username --data-only --table=tablename sourcedb > onetable.pg --single table
-  * psql db < onetable.pg --restore single table to database
-  * pg_restore --data-only --table=tablename fulldump.pg > onetable.pg --extracting single table out of the large dump
-* backup database with password prompt
-  * pg_dump -U username -W -f /path/mydb.sql dbname
-* restore database
-  * \i /path/mydb.sql --slashes is important
-  * dbname < /path/mydb.sql
-* show pg_config file location
-  * SHOW config_file
-* alter column type
-  * alter table table_name alter column column_name type varchar(2048) using column_name::varchar;
-* drop all active sessions
-  * ALTER DATABASE db CONNECTION LIMIT 1;
-  * SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'db';
-* connect as admin
-  * psql -h localhost postgres postgres
-* export query to csv
-  * COPY (SELECT * FROM ...) TO '/tmp/filename.csv' (format CSV);
+**useful queries**
+- _**show db tables**_
+```sql
+   SELECT * FROM pg_catalog.pg_tables;
+```
+- _**show tables without system tables**_
+```sql
+   SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';
+```
+- _**list all databases**_
+-  `\l`
+- _**show tables \tables and sequences \tables and views**_
+-  `\dt \d \dS`
+- _**use database**_
+-  `\c dbname`
+- _**alter column type**_
+```sql
+   ALTER TABLE tbname ALTER COLUMN col TYPE VARCHAR(2048) USING col::varchar;
+```
+  
+**backup, export database**
+
+- _**whole**_
+-  `pg_dump -U username -f /path/dump.sql dbname`
+- _**schema only**_
+-  `pg_dump -U username -s -f /path/dump.sql dbname`
+- _**single table**_
+-  `pg_dump -U username -d dbname -t tbname > dump.sql`
+- _**single table data only**_
+-  `pg_dump -U username --data-only --table=tablename sourcedb > dump.sql`
+- _**export data to csv**_
+```sql
+COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
+```
+
+**restore, import database**
+
+- _**restore database**_
+-  `\i /path/dump.sql`
+- _**single table to database**_
+-  `psql dbname < dump.sql`
+- _**extracting single table out of the large dump**_
+-  `pg_restore --data-only --table=tablename fulldump.pg > dump.pg`
+- _**import data from csv**_
+```sql
+   COPY table1(col1, col2, col3) FROM '/path/to/csv/data.txt' WITH (FORMAT csv);
+```
+- _**import data from csv - include the header row**_
+```sql
+   COPY table1 FROM '/path/to/csv/data.txt' DELIMITER ',' CSV HEADER;
+```
+
+**useful system commands**
+
+- _**show pg_config file location**_
+```sql
+  SHOW config_file
+```
+- _**connect as admin**_
+- `psql -h localhost postgres postgres`
+- _**drop all active sessions**_
+```sql
+  ALTER DATABASE db CONNECTION LIMIT 1;
+  SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'db';
+```
 
 ### MySQL
 
-* import table from one database to another with the same name
-  * CREATE TABLE db1.table1 SELECT * FROM db2.table1;
+**restore, import database**
+
+- _**import table with the same name from one database to another**_
+```sql
+   CREATE TABLE db1.table1 SELECT * FROM db2.table1;
+```
