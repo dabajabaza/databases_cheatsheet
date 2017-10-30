@@ -82,5 +82,5 @@
 ```sql
    CREATE TABLE db1.table1 SELECT * FROM db2.table1;
 ```
-- _**import data from csv file. Basename of a file mult be equal to tablename**_
+- _**import data from csv file. Basename of a file must be equal to tablename**_
 - `mysqlimport -u user -p -c column1,column2 --fields-terminated-by=; database_name table_name.txt`
