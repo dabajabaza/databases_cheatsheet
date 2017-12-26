@@ -41,6 +41,7 @@
 - _**export data to csv**_
 ```sql
    COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' (format CSV);
+   COPY (SELECT * FROM table1) TO '/path/to/csv/data.txt' WITH CSV DELIMITER ';' FORCE QUOTE *;
 ```
 
 ### restore, import database
