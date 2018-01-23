@@ -1,4 +1,9 @@
 # Databases Cheatsheet
+## Common
+
+### SQL style guide
+
+http://www.sqlstyle.guide/ru/
 
 ## PostgreSQL
 
