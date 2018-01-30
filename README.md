@@ -8,7 +8,11 @@ http://www.sqlstyle.guide/ru/
 ## PostgreSQL
 
 ### useful queries
-
+- _**check the current session TZ**
+```sql
+   SELECT current_setting('TIMEZONE');
+   show timezone;
+```
 - _**show db tables**_
 ```sql
    SELECT * FROM pg_catalog.pg_tables;
