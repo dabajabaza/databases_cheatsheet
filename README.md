@@ -8,6 +8,7 @@ http://www.sqlstyle.guide/ru/
 ## PostgreSQL
 
 ### useful queries
+
 - _**check the current session TZ**
 ```sql
    SELECT current_setting('TIMEZONE');
