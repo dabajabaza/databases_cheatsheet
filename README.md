@@ -9,7 +9,7 @@ http://www.sqlstyle.guide/ru/
 
 ### useful queries
 
-- _**check the current session TZ**
+-  **check the current session TZ**
 ```sql
    SELECT current_setting('TIMEZONE');
    show timezone;
