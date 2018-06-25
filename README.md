@@ -84,6 +84,7 @@ http://www.sqlstyle.guide/ru/
 ```sql
   REVOKE CONNECT ON DATABASE thedb FROM public;
   SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();
+  GRANT CONNECT ON DATABASE thedb TO public;
 ```
 
 - _**drop all active sessions**_
