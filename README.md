@@ -79,6 +79,13 @@ http://www.sqlstyle.guide/ru/
 ```
 - _**connect as admin**_
 - `psql -h localhost postgres postgres`
+
+- _**prevent future connections && terminate all connections to this db except your own**_
+```sql
+  REVOKE CONNECT ON DATABASE thedb FROM public;
+  SELECT pid, pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = current_database() AND pid <> pg_backend_pid();
+```
+
 - _**drop all active sessions**_
 ```sql
   ALTER DATABASE db CONNECTION LIMIT 1;
